@@ -2,7 +2,7 @@ package Internship;
 
 import java.util.Scanner;
 
-public class TempConvertor {
+public class TemperatureConvertor {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.printf("Welcome to the the Temperature convertor\n" +
