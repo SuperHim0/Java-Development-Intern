@@ -1,0 +1,35 @@
+package Internship;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileEncryption {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Give the path in this format\nC:\\Users\\Acer\\Desktop\\gta.png\n:-");
+        String path = scanner.next();
+        System.out.print("Provide the key(in integer) : ");
+        //storing the key
+        int key = scanner.nextInt();
+        FileInputStream fis = new FileInputStream(path);
+        int ind = 0;
+        //reading the length of the file and make newfile length == to it
+        byte [] newfile = new byte[fis.available()];
+        fis.read(newfile);
+        for (byte b:newfile){
+            //using XOR to encrypt the file with key that modify every bit of file
+            // the same process is used to decrypt the file using XOR that help to make the value again same as before
+            newfile[ind] =(byte) (b^key);
+            ind++;
+        }
+        FileOutputStream fos = new FileOutputStream(path);
+        //write the data on file and store it
+        fos.write(newfile);
+        fis.close();
+        fos.close();
+        System.out.println("your file is encrypted remember this key to decrypted the file");
+    }
+}
